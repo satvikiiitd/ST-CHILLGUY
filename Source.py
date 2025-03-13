@@ -42,11 +42,11 @@ test_acc_clean["Magnitude"] = compute_magnitude(test_acc_clean)
 test_gyro_clean["Magnitude"] = compute_magnitude(test_gyro_clean)
 test_mag_clean["Magnitude"] = compute_magnitude(test_mag_clean)
 
-# Combine only relevant features for ML model (no rolling variance)
+
 X_train = pd.concat([train_acc_clean["Magnitude"], train_gyro_clean["Magnitude"], train_mag_clean["Magnitude"]], axis=1)
 X_test = pd.concat([test_acc_clean["Magnitude"], test_gyro_clean["Magnitude"], test_mag_clean["Magnitude"]], axis=1)
 
-# Generate synthetic labels assuming binary classification
+
 # 0 = Stable, 1 = Unstable
 y_train = [0] * (len(X_train) // 2) + [1] * (len(X_train) - len(X_train) // 2)
 y_test = [0] * (len(X_test) // 2) + [1] * (len(X_test) - len(X_test) // 2)
